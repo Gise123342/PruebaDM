@@ -1,0 +1,17 @@
+triggers:
+- description: null
+  envs: []
+  last_enabled_at: 2025-09-12 22:10:26.406482
+  name: 'Trigger de una vez '
+  pipeline_uuid: qb_invoices_backfill
+  schedule_interval: '@once'
+  schedule_type: time
+  settings: null
+  sla: null
+  start_time: 2025-09-11 23:00:00
+  status: active
+  token: 3a4b7437b9f74d2292da1fb80c153f80
+  variables:
+    chunk_days: 7
+    fecha_fin: '2025-09-01T00:00:00Z'
+    fecha_inicio: '2025-01-01T00:00:00Z'

@@ -1,0 +1,1 @@
+{"invoices": {"module": "pandas.core.frame", "name": "DataFrame", "type": "instance", "uuid": "pandas.core.frame.DataFrame", "hash": "0x7fb4a4454880", "variable_type": "dataframe"}, "invoice_lines": {"module": "pandas.core.frame", "name": "DataFrame", "type": "instance", "uuid": "pandas.core.frame.DataFrame", "hash": "0x7fb4a44576d0", "variable_type": "dataframe"}}
