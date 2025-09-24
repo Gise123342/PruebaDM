@@ -20,7 +20,7 @@ Este proyecto implementa un pipeline de backfill histórico que extrae informaci
 
 **Clonar el repositorio desde GitHub**
 
-git clone https://github.com/Gise123342/DeberDataMining.git
+git clone https://github.com/Gise123342/PruebaDM.git
 
 **Navegar al directorio del proyecto**
 
