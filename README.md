@@ -20,7 +20,7 @@ Este proyecto implementa un pipeline de backfill histórico que extrae informaci
 
 **Clonar el repositorio desde GitHub**
 
-git clone https://github.com/Gise123342/PruebaDM.git
+git clone https://github.com/Gise123342/DeberDataMining.git
 
 **Navegar al directorio del proyecto**
 
@@ -163,3 +163,35 @@ Cómo correr:
 
   **Exporter (ejem):**
  
+  Batch INVOICES: 10 (inserted=9, updated=1, skipped=0)
+  
+  Carga INVOICES: 23 filas en 0.12s
+  
+
+Cómo interpretar:
+
+- filas_procesadas = 0 (no hubo cambios en ese rango)
+- status = error en log (revisar detalle de excepción)
+- Conteo en warehouse vs. API debe coincidir en el rango consultado
+
+**Troubleshooting: auth, paginación, límites, timezones, almacenamiento y permisos.**
+
+Autenticación:
+- Asegúrate de que todos los secretos estén correctamente configurados en el gestor de secretos en mage(client_id, client_secret, refresh_token, realm_id).
+- En el caso de tener errores relacionados con access_token, genera uno nuevo usando el refresh_token.
+- Verifica que el realm_id corresponda al entorno de QuickBooks configurado (producción o sandbox).
+
+Límites de API:
+- QuickBooks Online impone límites de peticiones por minuto y por día.
+
+Se utilizó Backoff exponencial para manejar saturaciones.
+- Si se recibe error 429, se reintenta hasta 5 veces con backoff progresivo.
+
+Timezones:
+- Todos los pipelines transforman timestamps a UTC para consistencia.
+
+Troubleshooting básico:
+- Manejo de errores implementado con máx. 5 reintentos.
+- Backoff exponencial (2^i segundos) entre cada intento.
+- Errores manejados: 429 (rate limit), 500, 502, 503, 504.
+- En caso de error no bloqueante, se loguea y se continúa con el siguient
